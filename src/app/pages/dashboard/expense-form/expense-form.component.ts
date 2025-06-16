@@ -73,14 +73,14 @@ export class ExpenseFormComponent {
 //     this.editedExpense = {};
 //   }
 
-//   saveExpenses() {
-//     localStorage.setItem('expenses', JSON.stringify(this.expenses));
-//     this.calculateTotal();
-//   }
+// //   saveExpenses() {
+// //     localStorage.setItem('expenses', JSON.stringify(this.expenses));
+// //     this.calculateTotal();
+// //   }
 
-//   calculateTotal() {
-//     this.total = this.expenses.reduce((sum, e) => sum + parseFloat(e.amount), 0);
-//   }
+// //   calculateTotal() {
+// //     this.total = this.expenses.reduce((sum, e) => sum + parseFloat(e.amount), 0);
+// //   }
   expenses: any[] = [];
   total = 0;
   editingIndex: number | null = null;
