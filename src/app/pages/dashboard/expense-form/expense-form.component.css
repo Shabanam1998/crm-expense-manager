@@ -1,0 +1,111 @@
+/* .container {
+  max-width: 900px;
+  background-color: #ffffff;
+}
+
+.table-success {
+  background-color: #e8fbe8;
+}
+
+h3 {
+  font-weight: bold;
+} */
+ .container {
+  max-width: 1000px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 10px rgba(0, 128, 0, 0.1);
+  margin: auto;
+}
+
+h3 {
+  font-weight: bold;
+  color: #218838;
+}
+
+.table {
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.table th {
+  background-color: #d4edda;
+  color: #155724;
+  font-weight: 600;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f1fdf1;
+}
+
+input.form-control {
+  padding: 4px 8px;
+  font-size: 14px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+}
+
+.btn {
+  padding: 4px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-outline-success {
+  color: #218838;
+  border-color: #218838;
+
+  &:hover {
+    background-color: #218838;
+    color: #fff;
+  }
+}
+
+.btn-outline-danger {
+  color: #c82333;
+  border-color: #c82333;
+
+  &:hover {
+    background-color: #c82333;
+    color: #fff;
+  }
+}
+
+.btn-outline-primary {
+  color: #117a8b;
+  border-color: #117a8b;
+
+  &:hover {
+    background-color: #117a8b;
+    color: #fff;
+  }
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+
+  &:hover {
+    background-color: #5a6268;
+  }
+}
+
+.text-success {
+  color: #218838 !important;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
+
+.me-2 {
+  margin-right: 0.5rem;
+}

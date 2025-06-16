@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthServiceService } from '../../auth-service.service';
 
 @Component({
   selector: 'app-login',
@@ -7,47 +9,40 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  
+  loginForm: FormGroup;
+  errorMessage = '';
 
-
-  isSignDivVisiable: boolean  = true;
-
-  signUpObj: SignUpModel  = new SignUpModel();
-  loginObj: LoginModel  = new LoginModel();
-
-  constructor(private router: Router){}
-
-
-  onRegister() {
-    debugger;
-    const localUser = localStorage.getItem('angular17users');
-    if(localUser != null) {
-      const users =  JSON.parse(localUser);
-      users.push(this.signUpObj);
-      localStorage.setItem('angular17users', JSON.stringify(users))
-    } else {
-      const users = [];
-      users.push(this.signUpObj);
-      localStorage.setItem('angular17users', JSON.stringify(users))
-    }
-    alert('Registration Success')
+  constructor(private fb: FormBuilder, private authService: AuthServiceService, private router: Router) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
   }
 
-  onLogin() {
-    debugger;
-    const localUsers =  localStorage.getItem('angular17users');
-    if(localUsers != null) {
-      const users =  JSON.parse(localUsers);
-
-      const isUserPresent =  users.find( (user:SignUpModel)=> user.email == this.loginObj.email && user.password == this.loginObj.password);
-      if(isUserPresent != undefined) {
-        alert("User Found...");
-        localStorage.setItem('loggedUser', JSON.stringify(isUserPresent));
-        this.router.navigateByUrl('/dashboard');
+  login() {
+    if (this.loginForm.valid) {
+      const { email, password } = this.loginForm.value;
+      if (this.authService.login(email, password)) {
+        this.router.navigate(['/dashboard']);
       } else {
-        alert("No User Found")
+        this.errorMessage = 'Invalid email or password';
       }
     }
   }
+
+
+
+  //  username = '';
+  // password = '';
+
+  // constructor(private router: Router) {}
+
+  // login() {
+  //   if (this.username && this.password) {
+  //     this.router.navigate(['/dashboard']);
+  //   }
+  // }
 
 }
 

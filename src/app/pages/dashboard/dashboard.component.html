@@ -1,1 +1,40 @@
-<p>dashboard works!</p>
+<div class="container mt-4 bg-white p-4 rounded shadow-sm border border-success">
+  <h3 class="text-success mb-3">Add Expense</h3>
+  <form [formGroup]="expenseForm" (ngSubmit)="submit()">
+    <div class="mb-3">
+      <label>Date</label>
+      <input type="date" formControlName="date" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label>Category</label>
+      <select formControlName="category" class="form-control">
+        <option value="">-- Select --</option>
+        <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label>Description</label>
+      <input formControlName="description" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label>Amount</label>
+      <input type="number" formControlName="amount" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label>Payment Method</label>
+      <select formControlName="paymentMethod" class="form-control">
+        <option value="">-- Select --</option>
+        <option *ngFor="let method of paymentMethods" [value]="method">{{ method }}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success w-100" [disabled]="!expenseForm.valid">
+      Save Expense
+    </button>
+  </form>
+</div>
+

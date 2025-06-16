@@ -1,0 +1,150 @@
+<!-- 
+<div class="container mt-4 bg-white p-4 rounded shadow-sm border border-success">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="text-success">Expense List</h3>
+    <a routerLink="/dashboard" class="btn btn-outline-success" >+ Add Expense</a>
+  </div>
+
+  <table class="table table-bordered table-striped table-hover">
+    <thead class="table-success text-center">
+      <tr>
+        <th>#</th>
+        <th>Date</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Amount (AED)</th>
+        <th>Payment</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="expenses.length > 0; else noData">
+      <tr *ngFor="let expense of expenses; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ expense.date }}</td>
+        <td>{{ expense.category }}</td>
+        <td>{{ expense.description }}</td>
+        <td class="text-end">{{ expense.amount }}</td>
+        <td>{{ expense.paymentMethod }}</td>
+        <td class="text-center">
+          <button class="btn btn-sm btn-outline-danger" (click)="delete(i)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noData>
+    <p class="text-center text-muted">No expenses recorded yet.</p>
+  </ng-template>
+
+  <div class="text-end mt-3">
+    <h5 class="text-success">Total: AED {{ total }}</h5>
+  </div>
+</div> -->
+
+
+
+
+<!-- <div class="container mt-4 bg-white p-4 rounded shadow-sm border border-success">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="text-success">Expense List</h3>
+    <a routerLink="/dashboard" class="btn btn-outline-success" >+ Add Expense</a>
+  </div>
+
+  <table class="table table-bordered table-striped table-hover">
+    <thead class="table-success text-center">
+      <tr>
+        <th>#</th>
+        <th>Date</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Amount (AED)</th>
+        <th>Payment</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="expenses.length > 0; else noData">
+      <tr *ngFor="let expense of expenses; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ expense.date }}</td>
+        <td>{{ expense.category }}</td>
+        <td>{{ expense.description }}</td>
+        <td class="text-end">{{ expense.amount }}</td>
+        <td>{{ expense.paymentMethod }}</td>
+        <td class="text-center">
+          <button class="btn btn-sm btn-outline-danger" (click)="delete(i)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noData>
+    <p class="text-center text-muted">No expenses recorded yet.</p>
+  </ng-template>
+
+  <div class="text-end mt-3">
+    <h5 class="text-success">Total: AED {{ total }}</h5>
+  </div>
+</div> -->
+
+
+<div class="container mt-4 bg-white p-4 rounded shadow-sm border border-success">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="text-success">Expense List</h3>
+    <a routerLink="/dashboard" class="btn btn-outline-success">+ Add Expense</a>
+  </div>
+
+  <table class="table table-bordered table-striped table-hover">
+    <thead class="table-success text-center">
+      <tr>
+        <th>#</th>
+        <th>Date</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Amount (AED)</th>
+        <th>Payment</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="expenses.length > 0; else noData">
+      <tr *ngFor="let expense of expenses; let i = index">
+        <ng-container *ngIf="editingIndex === i; else viewRow">
+          <td>{{ i + 1 }}</td>
+          <td><input [(ngModel)]="editedExpense.date" class="form-control" type="date" /></td>
+          <td><input [(ngModel)]="editedExpense.category" class="form-control" /></td>
+          <td><input [(ngModel)]="editedExpense.description" class="form-control" /></td>
+          <td><input [(ngModel)]="editedExpense.amount" class="form-control" type="number" /></td>
+          <td><input [(ngModel)]="editedExpense.paymentMethod" class="form-control" /></td>
+          <td class="text-center">
+            <button class="btn btn-sm btn-success me-2" (click)="saveEdit(i)">Save</button>
+            <button class="btn btn-sm btn-secondary" (click)="cancelEdit()">Cancel</button>
+          </td>
+        </ng-container>
+        <ng-template #viewRow>
+          <tr>
+            <td>{{ i + 1 }}</td>
+            <td>{{ expense.date }}</td>
+            <td>{{ expense.category }}</td>
+            <td>{{ expense.description }}</td>
+            <td class="text-end">{{ expense.amount }}</td>
+            <td>{{ expense.paymentMethod }}</td>
+            <td class="text-center">
+              <button class="btn btn-sm btn-outline-primary me-2" (click)="edit(i)">Edit</button>
+              <button class="btn btn-sm btn-outline-danger" (click)="delete(i)">Delete</button>
+            </td>
+          </tr>
+        </ng-template>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noData>
+    <tr>
+      <td colspan="7" class="text-center text-muted">No expenses recorded yet.</td>
+    </tr>
+  </ng-template>
+
+  <div class="text-end mt-3">
+    <h5 class="text-success">Total: AED {{ total }}</h5>
+  </div>
+</div>
+
